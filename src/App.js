@@ -1,24 +1,35 @@
-import logo from './logo.svg';
+import React from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import './App.css';
+import Customers from './customers';
+import Trainings from './trainings';
+import{ BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <div>
+            <AppBar position="static">
+                <Toolbar>
+                  <Typography>Personal trainer app</Typography>
+                </Toolbar>
+            </AppBar>
+            </div>
+        <Router>
+          <div>
+            <Link to="/">Customers </Link>
+            <Link to="/trainings">Trainings </Link>
+            <Link to="/contact">Contacts</Link>
+            <Switch>
+              <Route exact path="/" component={Customers} />
+              <Route exact path="/trainings" component={Trainings} />
+              <Route render={() => <h1> Page not   found</h1>}/>
+            </Switch>
+          </div>
+        </Router>
+      </div>
   );
 }
 
