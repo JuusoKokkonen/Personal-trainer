@@ -18,6 +18,14 @@ export default function Traininglist() {
         })
     }
 
+    const deleteTraining = (link) => {
+        if (window.confirm("Delete this training from the system?")) {
+            fetch(link, {method: 'DELETE'})
+            .then(res => fetchTrainings())
+            .catch(err => console.error(err))
+        }
+    }
+
     const columns = [
         {
             Header: "Date",
@@ -31,12 +39,20 @@ export default function Traininglist() {
             Header: "Activity",
             accessor: "activity"
         },
+        {
+        sortable: false,
+        filterable: false,
+        width: 100,
+        accessor: "links[0].href",
+        Cell: ({value}) => <Button color="secondary" size="small" onClick={() => deleteTraining(value)}>Delete</Button>
+    },
         
     ]
 
     return (
         <div>
             <h1>Trainings</h1>
+            <button onClick={fetchTrainings}>Refresh</button>
             <ReactTable filterable={true} data={trainings} columns={columns} />
         </div>
     );
