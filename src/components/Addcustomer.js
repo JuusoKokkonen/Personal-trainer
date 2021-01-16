@@ -42,7 +42,7 @@ export default function Addcustomer(props) {
             Add a new customer
         </Button>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-            <DialogTitle id="form-dialog-title">Edit customer</DialogTitle>
+            <DialogTitle id="form-dialog-title">Add customer</DialogTitle>
             <DialogContent>
             <TextField
                 autoFocus
