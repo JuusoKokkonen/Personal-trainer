@@ -19,9 +19,8 @@ function App() {
             </div>
         <Router>
           <div>
-            <Link to="/">Customers </Link>
-            <Link to="/trainings">Trainings </Link>
-            <Link to="/contact">Contacts</Link>
+            <Link to="/" style={{padding: 30}}>Customers </Link>
+            <Link to="/trainings" style={{padding: 30}}>Trainings </Link>
             <Switch>
               <Route exact path="/" component={Customers} />
               <Route exact path="/trainings" component={Trainings} />
